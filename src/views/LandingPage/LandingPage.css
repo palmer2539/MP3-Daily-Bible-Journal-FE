@@ -1,0 +1,31 @@
+.main_body_wrapper {
+  height: 90vh;
+  background-image: url("/assets/landingPageBackground.jpg");
+  background-position: center;
+  background-size: contain;
+}
+
+.text_wrapper{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing_page_text_color{
+  text-align: center;;
+  color:red;
+}
+
+.landing_page_button{
+}
+
+.sign_up_button{
+  display: flex;
+  justify-content: center;
+}
+
+.log_in_button{
+  display: flex;
+  justify-content: center;
+}
