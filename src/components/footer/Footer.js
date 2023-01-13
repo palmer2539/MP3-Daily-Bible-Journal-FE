@@ -9,8 +9,8 @@ const Footer = () => {
     <Container fluid>
       <Navbar>
             <Navbar.Brand className="ms-5">Daily Bible Journal</Navbar.Brand>
-            <Nav.Link className="ms-3" href="#link">Contact Us</Nav.Link>
-            <Nav.Link className="ms-3" href="#link">FAQ's</Nav.Link>
+            <Nav.Link className="ms-3" href="/contactus">Contact Us</Nav.Link>
+            <Nav.Link className="ms-3" href="/faqs">FAQ's</Nav.Link>
         </Navbar>
     </Container>
 

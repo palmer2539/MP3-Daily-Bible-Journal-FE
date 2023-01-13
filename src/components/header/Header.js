@@ -14,16 +14,16 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">The Bible</Nav.Link>
-            <Nav.Link href="#link">Today's Daily Verse</Nav.Link>
-            <Nav.Link href="#home">About Us</Nav.Link>
+            <Nav.Link href="/bible">The Bible</Nav.Link>
+            <Nav.Link href="/dailyverse">Today's Daily Verse</Nav.Link>
+            <Nav.Link href="/aboutus">About Us</Nav.Link>
           </Nav>
           <Nav>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item href="/notes">
                 Notes
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="/accountinfo">
                 Account Info
               </NavDropdown.Item>
               <NavDropdown.Divider />
