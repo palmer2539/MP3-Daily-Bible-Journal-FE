@@ -5,15 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Footer = () => {
   return (
-    <Navbar className="bg-primary">
-    <Container fluid>
-      <Navbar>
-            <Navbar.Brand className="ms-5">Daily Bible Journal</Navbar.Brand>
-            <Nav.Link className="ms-3" href="/contactus">Contact Us</Nav.Link>
-            <Nav.Link className="ms-3" href="/faqs">FAQ's</Nav.Link>
-        </Navbar>
-    </Container>
-
+    <Navbar className="all_navbar navbar navbar-expand-lg navbar-dark bg-primary">
+      <Container fluid>
+        <Navbar>
+              <Navbar.Brand>Daily Bible Journal</Navbar.Brand>
+              <Nav.Link className="ms-3" href="/contactus">Contact us</Nav.Link>
+              <Nav.Link className="ms-3" href="/faqs">FAQ's</Nav.Link>
+          </Navbar>
+      </Container>
     </Navbar>
   )
 }

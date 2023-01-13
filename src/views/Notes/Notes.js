@@ -1,8 +1,14 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const Notes = () => {
   return (
-    <div>this is the notes page</div>
+    <Container>
+      <h1>
+       My Journal Entries
+      </h1>
+    </Container>
+    
   )
 }
 
