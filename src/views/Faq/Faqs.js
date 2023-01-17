@@ -18,7 +18,7 @@ const Faqs = () => {
       <Accordion.Item eventKey="1">
         <Accordion.Header>What happens if I cannot sign into my account?</Accordion.Header>
         <Accordion.Body>
-          If you are unable to sign into your account, attempt to first reset your password. If that does not resolve your issue, please head to the <a href="/contactus">Contact Us</a> page to find our support email.
+          If you are unable to sign into your account, attempt to first reset your password. If that does not resolve your issue, please head to the <a href="/contactus">"Contact us"</a> page to find our support email.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
