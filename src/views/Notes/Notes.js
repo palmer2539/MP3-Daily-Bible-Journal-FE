@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row, Card, Accordion, Badge, useAccordionButton } from 'react-bootstrap';
-import  entries  from './dailyEntries';
-
+import axios from 'axios';
 
 const Notes = () => {
+  const [entries, setEntries] = useState([])
+
+
   const deleteModal = (id) => {
     if (window.confirm("Do you wish to delete this entry?")) {
     }
@@ -23,6 +25,17 @@ const Notes = () => {
     );
   }
 
+  const getEntries= async () => {
+    const { data } = await axios.get('/journalentries');
+    setEntries(data);
+  }
+
+  console.log(entries);
+
+  useEffect(() => {
+    getEntries();
+  }, [])
+
   return (
     <Container>
       <Row>
@@ -36,7 +49,7 @@ const Notes = () => {
         </Col>
       </Row>
       {entries.map((entry) => (
-        <Accordion>
+        <Accordion key={entry._id}>
           <Card className="my-3" border="primary">
               <Card.Header>
                   <Row>
@@ -61,7 +74,7 @@ const Notes = () => {
                       className="m-0"
                       variant="outline-danger" 
                       style={{float: "right"}} 
-                      onclick={() => deleteModal(entry.id)}
+                      onClick={() => deleteModal(entry.id)}
                       >
                         Delete
                       </Button>

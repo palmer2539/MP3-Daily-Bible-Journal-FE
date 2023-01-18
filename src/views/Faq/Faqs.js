@@ -1,6 +1,5 @@
 import React from 'react'
 import { Accordion, Container } from 'react-bootstrap'
-import ContactUs from '../Contactus/Contactus';
 
 
 const Faqs = () => {
