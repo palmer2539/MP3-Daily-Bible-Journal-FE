@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const DailyVerse = () => {
-  return (
-    <div>DailyVerse</div>
-  )
-}
+  return(
+    <h1>Today's Daily Verse</h1>
+  );
+};
 
-export default DailyVerse
+export default DailyVerse;
