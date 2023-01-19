@@ -12,17 +12,15 @@ const Notes = () => {
   }
 
   function CustomToggle({ children, eventKey }) {
-  const decoratedOnClick = useAccordionButton(eventKey, () =>
-    console.log('totally custom!'),
-  );
-  return (
-      <span
-        style={{ cursor: "pointer" }}
-        onClick={decoratedOnClick}
-      >
-        {children}
-      </span>
-    );
+    const decoratedOnClick = useAccordionButton(eventKey);
+    return (
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={decoratedOnClick}
+        >
+          {children}
+        </span>
+      );
   }
 
   const getEntries= async () => {
@@ -30,11 +28,11 @@ const Notes = () => {
     setEntries(data);
   }
 
-  console.log(entries);
-
   useEffect(() => {
     getEntries();
   }, [])
+
+  console.log(entries);
 
   return (
     <Container>

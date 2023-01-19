@@ -6,4 +6,4 @@ const Bible = () => {
   )
 }
 
-export default Bible
+export default Bible;

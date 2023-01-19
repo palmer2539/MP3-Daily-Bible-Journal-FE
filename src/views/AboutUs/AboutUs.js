@@ -1,16 +1,18 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const Aboutus = () => {
   return(
-    <div>
-    <h1>About us</h1>
+    <Container>
+      <h1>About us</h1>
 
-    <h4>Welcome to Daily Bible Journal!</h4>
+      <h4>Welcome to Daily Bible Journal!</h4>
 
-    <p>At Daily Bible Journal we believe it is as important to notate your learnings as it is to just read The Bible.</p>
-      
-    <p>This is your one stop to reading The Bible and saving your notes all in one place! Gone are the days of needing to keep track of all your notes. If you have further questions, head on over to our FAQ page to see if we already answered them!</p>
-    </div>
+      <p>At Daily Bible Journal we believe it is as important to notate your learnings as it is to just read The Bible.</p>
+        
+      <p>This is your one stop to reading The Bible and saving your notes all in one place! Gone are the days of needing to keep track of all your notes. 
+      If you have further questions, head on over to our <a href="/faqs">FAQ</a> page to see if we already answered them!</p>
+    </Container>
   );
 };
 
