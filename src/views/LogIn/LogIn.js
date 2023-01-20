@@ -1,10 +1,52 @@
-import React from 'react'
-import { Form, Button, Container, FloatingLabel } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form, Button, Container, FloatingLabel, Row, Col } from 'react-bootstrap'
+import axios from "axios";
+import Loading from '../../components/loading/Loading';
+import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 
 const LogIn = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }
+      
+      setLoading(true)
+
+      const { data } = await axios.post(
+        "/users/login",
+        {
+          email,
+          password
+        },
+        config
+      );
+
+      console.log(data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false)
+
+    } catch (error) {
+      setError(error.response.data.message);
+      console.log(error.response.data.message);
+      setLoading(false)
+    }
+  };
+
   return (
     <Container style={{height:"90vh"}}>
-      <Form>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <Form onSubmit={submitHandler}>
         <h1>
           Daily Bible Journal Account
         </h1>
@@ -13,20 +55,25 @@ const LogIn = () => {
         </h5>
         <Form.Group className="my-3" controlId="formBasicEmail">
           <FloatingLabel controlId="floatingInput" label="Enter a valid email">
-            <Form.Control type="email"/>
+            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           </FloatingLabel>
         </Form.Group>
         <Form.Group className="my-3" controlId="formBasicPassword">
           <FloatingLabel controlId="floatingPassword" label="Enter a password">
-            <Form.Control type="password"/>
+            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           </FloatingLabel>
         </Form.Group>
-        <Button className="my-3 btn-lg" variant="outline-primary" type="submit" >
-          Login
-        </Button>
+        <Row>
+          <Col>
+            <Button className="my-3 btn-lg" variant="outline-primary" type="submit" >
+              Login
+            </Button>
+          </Col>
+          {loading && <Loading />}
+        </Row>
       </Form>
     </Container>
   )
 }
 
-export default LogIn
+export default LogIn;
