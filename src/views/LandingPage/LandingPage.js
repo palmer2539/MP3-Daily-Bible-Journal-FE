@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./LandingPage.css";
 import { Col, Container, Row } from 'react-bootstrap';
 import { Stack } from 'react-bootstrap';
@@ -8,16 +8,6 @@ import Bgimage from './landingPageBackground.jpg'
 
 
 const LandingPage = () => {
-  // useEffect(({history}) => {
-  
-  //   const userInfo = localStorage.getItem("userInfo");
-
-  //   if(userInfo) {
-  //     history.push("/journalentries");
-  //   }
-
-  // }, [history])
-
 
   return (
     <div className="main_body_wrapper" style={{ backgroundImage: `url(${Bgimage})`}}>

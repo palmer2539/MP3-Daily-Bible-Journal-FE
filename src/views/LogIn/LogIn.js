@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button, Container, FloatingLabel, Row, Col } from 'react-bootstrap'
 import axios from "axios";
 import Loading from '../../components/loading/Loading';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const LogIn = () => {
 
@@ -10,6 +13,17 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  const navigate = useNavigate();
+  const userInfo = localStorage.getItem("userInfo");
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if(userInfo) {
+      navigate("/journalentries");
+    }
+  }, [navigate, userInfo]);
   
 
   const submitHandler = async (e) => {
@@ -65,7 +79,7 @@ const LogIn = () => {
         </Form.Group>
         <Row>
           <Col>
-            <Button className="my-3 btn-lg" variant="outline-primary" type="submit" >
+            <Button className="my-3 btn-lg" variant="outline-primary" type="submit">
               Login
             </Button>
           </Col>

@@ -3,10 +3,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import "./Header.css"
+import "./Header.css";
+import { useNavigate } from "react-router-dom";
 
 
 const Header = () => {
+
+
+  const navigate = useNavigate();
+
   return (
    <Navbar className="all_navbar navbar navbar-expand-lg navbar-dark bg-primary">
       <Container fluid>
@@ -30,7 +35,12 @@ const Header = () => {
                 Account Info
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item 
+                onClick={() => {
+                  localStorage.removeItem("userInfo");
+                  navigate("/");
+                }}
+              >
                 Logout
               </NavDropdown.Item>
             </NavDropdown>
@@ -41,4 +51,4 @@ const Header = () => {
   );
 };
 
-export default Header
+export default Header;
