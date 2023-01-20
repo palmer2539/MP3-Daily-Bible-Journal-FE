@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Form, Button, Container, FloatingLabel, Row, Col } from 'react-bootstrap'
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Form, Button, Container, FloatingLabel, Row, Col } from 'react-bootstrap';
 import Loading from '../../components/loading/Loading';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../actions/userActions';
 
 
 
@@ -11,50 +12,26 @@ const LogIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   
   const navigate = useNavigate();
   const userInfo = localStorage.getItem("userInfo");
 
   useEffect(() => {
-    const userInfo = localStorage.getItem("userInfo");
-
     if(userInfo) {
       navigate("/journalentries");
     }
   }, [navigate, userInfo]);
   
 
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector(state => state.userLogin);
+  const { loading, error } = userLogin;
+
   const submitHandler = async (e) => {
     e.preventDefault()
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json"
-        }
-      }
-      
-      setLoading(true)
-
-      const { data } = await axios.post(
-        "/users/login",
-        {
-          email,
-          password
-        },
-        config
-      );
-
-      console.log(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false)
-
-    } catch (error) {
-      setError(error.response.data.message);
-      console.log(error.response.data.message);
-      setLoading(false)
-    }
+    dispatch(login(email, password));
+    
   };
 
   return (

@@ -1,10 +1,10 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import Loading from '../../components/loading/Loading';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '../../actions/userActions';
 
 const SignUp = () => {
 
@@ -13,8 +13,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const userInfo = localStorage.getItem("userInfo");
@@ -27,39 +25,22 @@ const SignUp = () => {
     }
   }, [navigate, userInfo]);
 
+
+  const dispatch = useDispatch();
+
+  const userSignup = useSelector(state => state.userSignup);
+  const { loading, error } = userSignup;
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    if(password !== confirmPassword) {
-      setMessage("The entered passwords do not match. ")
+    if( password !== confirmPassword) {
+      setMessage('The entered passwords do not match. Please enter them again.')
     } else {
-      setMessage(null)
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json"
-          },
-        };
-
-        setLoading(true);
-
-        const { data } = await axios.post(
-          "/users",
-          {name, email, password},
-          config
-        )
-        
-        console.log(data);
-        setLoading(false);
-        localStorage.setItem("userInfo", JSON.stringify(data));
-
-      } catch (error) {
-        setError(error.response.data.message);
-      };
-    };
-
-    console.log(name, email, password)
-  }
+      dispatch(signup(name, email, password));
+    }
+  };
 
 
   return (
