@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import Loading from '../../components/loading/Loading';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -15,6 +15,17 @@ const SignUp = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const userInfo = localStorage.getItem("userInfo");
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+
+    if(userInfo) {
+      navigate("/journalentries");
+    }
+  }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
