@@ -35,12 +35,6 @@ const verses = [
 const verseIndex = Math.floor(Math.random() * verses.length);
 const verseID = verses[verseIndex];
 
-function stringToHTML(str) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(str, 'text/html');
-  return doc.body;
-};
-
 const DailyVerse = () => {
   const BIBLE_ID = `de4e12af7f28f599-02`;
   const [fetchedData, setFetchedData] = useState("");

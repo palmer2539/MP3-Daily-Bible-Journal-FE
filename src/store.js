@@ -19,7 +19,7 @@ const reducer = combineReducers({
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
-  : null
+  : null;
 
 const initialState = {
   userLogin : { userInfo: userInfoFromStorage }
@@ -27,13 +27,30 @@ const initialState = {
 
 console.log(userInfoFromStorage)
 
-const middleware = [thunk];
+// const thunkMiddleware = [thunk];
 
-const store = configureStore(
-  {reducer},
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+// const composedEnhancer = composeWithDevTools(applyMiddleware(middleware));
+
+// export default function configureStore(initialState) {
+//   const middlewares = [loggerMiddleware, thunkMiddleware]
+//   const middlewareEnhancer = applyMiddleware(...middlewares)
+
+//   const enhancers = [middlewareEnhancer, monitorReducersEnhancer]
+//   const composedEnhancers = compose(...enhancers)
+
+//   const store = createStore(reducer, initialState, composedEnhancers)
+
+//   return store
+// }
+
+
+
+
+
+const store = configureStore({
+  reducer: reducer,
+  initialState
+});
 
 console.log(initialState)
 

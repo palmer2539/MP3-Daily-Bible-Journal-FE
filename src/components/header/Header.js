@@ -11,12 +11,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
 
-  console.log(userLogin)
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
+
+
+  const userInfo = localStorage.getItem("userInfo");
+
+  console.log(userInfo)
 
   const logoutHandler = () => {
     dispatch(logout());

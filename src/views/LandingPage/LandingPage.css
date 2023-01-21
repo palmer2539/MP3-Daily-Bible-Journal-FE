@@ -38,4 +38,5 @@
   height: 60vh;
   margin: 50px;
   color: rgb(0, 188, 9);
+  backdrop-filter: blur(3px);
 }

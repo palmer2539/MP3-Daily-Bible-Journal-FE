@@ -5,8 +5,8 @@ import { listOfEntries } from '../../actions/entryActions';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import Loading from '../../components/loading/Loading';
 import { useNavigate } from 'react-router-dom';
-
-
+import Bgimage from "./notesbg.jpg";
+import './Notes.css'
 
 
 const Notes = () => {
@@ -14,15 +14,17 @@ const Notes = () => {
   const navigate = useNavigate();
 
   const entryList = useSelector( (state) => state.entryList)
-
   const { loading, entries, error} = entryList;
 
-  // const userLogin = useSelector( (state) => state.userLogin);
-  // const { userInfo } = userLogin
-  const userInfo = localStorage.getItem("userInfo");
+  const userLogin = useSelector( (state) => state.userLogin);
+  const { userInfo } = userLogin
+  // const userInfo = localStorage.getItem("userInfo");
 
   const entryMake = useSelector((state) => state.entryMake);
   const { success: successCreate } = entryMake;
+
+  const entryUpdate = useSelector((state) => state.entryUpdate);
+  const { success: successUpdate } = entryMake;
 
   const deleteHandler = (id) => {
     if (window.confirm("are you sure you wish to proceed?")) {
@@ -45,23 +47,27 @@ const Notes = () => {
   useEffect(() => {
     dispatch(listOfEntries());
     if (!userInfo) {
-      navigate('/login')
+      // navigate('/login')
     }
-  }, [dispatch, 
-    successCreate, 
-    navigate, 
-    userInfo
-  ]);
+  }, [dispatch, successCreate, successUpdate, navigate, userInfo]);
 
 
   return (
+    <div className="note_main_body_wrapper" style={{ backgroundImage: `url(${Bgimage})`}}>
     <Container style={{height:"90vh"}}>
       <Row>
         <Col style={{display: "inline-block"}}>
-          <h1 style={{display: "inline-block"}} className="my-3">
-          {/* {`${userInfo.name}'s Journal Entries:`} */}
+          <h1 style={{display: "inline-block"}} className="my-4">
+            {/* `${userInfo.name}'s  */}
+            Journal Entries:
           </h1>
-          <Button className="my-4" variant="info" style={{float: "right"}} href="/newentry">
+          <Button 
+            className="my-4" 
+            variant="info" 
+            style={{float: "right"}} 
+            href="/newentry" 
+            size="lg"
+          >
             New Entry
           </Button>{' '}
         </Col>
@@ -128,6 +134,8 @@ const Notes = () => {
         ))
       }
     </Container>
+
+    </div>
     
   )
 }

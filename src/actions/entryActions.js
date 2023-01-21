@@ -85,7 +85,7 @@ export const makeNewEntry = (heading, content, bible_book) => async (dispatch, g
 export const updateEntry = (id, heading, content, bible_book) => async (dispatch, getState) => {
   try {
     dispatch({
-    type: ENTRY_UPDATE_REQUEST,
+      type: ENTRY_UPDATE_REQUEST,
     });
 
     const {
@@ -109,6 +109,9 @@ export const updateEntry = (id, heading, content, bible_book) => async (dispatch
       type: ENTRY_UPDATE_SUCCESS,
       payload: data,
     });
+
+    console.log(data)
+    
   } catch (error) {
     const message =
       error.response && error.response.data.message

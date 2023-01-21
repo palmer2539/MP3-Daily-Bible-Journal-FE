@@ -16,11 +16,11 @@ const LandingPage = () => {
         <Row>
           <Stack gap={3}>
             <h1 className="landing_page_text_color">
-              Welcome to your Daily Bible Journal!
-            </h1>
-            <h2 className="landing_page_text_color">
+              Welcome to your Daily Bible Journal! 
+              <br/> 
+              <br/> 
               Read and annotate now!
-            </h2>
+            </h1>
             <Col className="sign_up_button">
               <a href="/signup">
                 <Button size="lg">
