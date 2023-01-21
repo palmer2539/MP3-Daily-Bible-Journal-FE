@@ -1,6 +1,6 @@
 import React from 'react';
 import "./LandingPage.css";
-import { Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Stack } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Bgimage from './landingPageBackground.jpg'
@@ -12,6 +12,7 @@ const LandingPage = () => {
   return (
     <div className="main_body_wrapper" style={{ backgroundImage: `url(${Bgimage})`}}>
       <Container className="text_wrapper main_body_wrapper" fluid>
+      <Card className='landingCard'>
         <Row>
           <Stack gap={3}>
             <h1 className="landing_page_text_color">
@@ -36,6 +37,7 @@ const LandingPage = () => {
             </Col>
           </Stack>
         </Row>
+      </Card>
       </Container>
     </div>
   )

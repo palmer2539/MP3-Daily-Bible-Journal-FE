@@ -1,58 +1,92 @@
-// import React from 'react';
-// import API_KEY from '../../my_api_key';
-// import { Container } from 'react-bootstrap';
-// import verses from './Verses';
+import React, { useEffect, useState } from 'react';
+import API_KEY from '../../my_api_key';
+import { Card, Container } from 'react-bootstrap';
+import axios from 'axios';
+import { Markup } from 'interweave';
+import Bgimage from './dailyversebg.jpg'
+import "./DailyVerse.css";
 
 
-// const DailyVerse = () => {
-//   const BIBLE_ID = `de4e12af7f28f599-02`;
-//   const verseIndex = Math.floor(Math.random() * verses.length);
-//   const verseID = verses[verseIndex];
-//   console.log(verseID);
 
-//   getResults(verseID).then((data) => {
-//     const passage = data.passages[0];
-//     verseRef.textContent = `<span><i>${passage.reference}</i></span>`;
-//     verse.textContent = `<div class="text eb-container">${passage.content}</div>`;
-//   });
+const verses = [
+  `JER.29.11`,
+  `PSA.23`,
+  `1COR.4.4-8`,
+  `PHP.4.13`,
+  `JHN.3.16`,
+  `ROM.8.28`,
+  `ISA.41.10`,
+  `PSA.46.1`,
+  `GAL.5.22-23`,
+  `HEB.11.1`,
+  `2TI.1.7`,
+  `1COR.10.13`,
+  `PRO.22.6`,
+  `ISA.40.31`,
+  `JOS.1.9`,
+  `HEB.12.2`,
+  `MAT.11.28`,
+  `ROM.10.9-10`,
+  `PHP.2.3-4`,
+  `MAT.5.43-44`,
+];
 
-//   function getResults(verseID) {
-//     return new Promise((resolve, reject) => {
-//       const xhr = new XMLHttpRequest();
-//       xhr.withCredentials = false;
-//       xhr.addEventListener(`readystatechange`, function () {
-//         if (this.readyState === this.DONE) {
-//           const { data, meta } = JSON.parse(this.responseText);
-//           _BAPI.t(meta.fumsId);
-//           resolve(data);
-//         }
-//       });
-//       xhr.open(
-//         `GET`,
-//         `https://api.scripture.api.bible/v1/bibles/${BIBLE_ID}/search?query=${verseID}`
-//       );
-//       xhr.setRequestHeader(`api-key`, API_KEY);
-//       xhr.onerror = () => reject(xhr.statusText);
-//       xhr.send();
-//     });
-//   };
 
-//   return(
-//       <Container>
-//         <div class="subheader">
-//         <div class="container flex">
-//           <div class="subheadings">
-//             <h2>Verse of the Day:</h2>
-//             <h3 id="viewing"><span id="verse"></span></h3>
-//           </div>
-//         </div>
-//       </div>
-//       <main class="container">
-//         <div id="verse-content" class="verse-container"></div>
-//       </main>
-//       </Container>
-//   )
+const verseIndex = Math.floor(Math.random() * verses.length);
+const verseID = verses[verseIndex];
 
-// };
+function stringToHTML(str) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(str, 'text/html');
+  return doc.body;
+};
 
-// export default DailyVerse;
+const DailyVerse = () => {
+  const BIBLE_ID = `de4e12af7f28f599-02`;
+  const [fetchedData, setFetchedData] = useState("");
+
+  const config = {
+    headers: {
+      "api-key": API_KEY
+    }
+  }
+
+  async function fetchData() {
+    try {
+      const {data} = await axios.get(`https://api.scripture.api.bible/v1/bibles/${BIBLE_ID}/search?query=${verseID}`, config);
+      setFetchedData(data.data.passages[0].content);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return(
+    <div className="dv_main_body_wrapper" style={{backgroundImage: `url(${Bgimage})`}}>
+      <Container  className="dv_text_wrapper main_body_wrapper" fluid style={{height:"90vh"}}>
+        <Card className="verseCard" style={{"padding":"15px 0px"}}>
+          <div className="subheader">
+            <div className="container flex">
+              <div className="subheadings">
+                <h1>Verse of the Day:</h1>
+                <h3 id="viewing"><span id="verse">{verseID}</span></h3>
+              </div>
+            </div>
+          </div>
+          <main className="container">
+            <div id="verse-content" className="verse-container">
+              <h3>
+                <Markup content={fetchedData}/>
+              </h3>
+            </div>
+          </main>
+        </Card>
+      </Container>
+    </div>
+  )
+};
+
+export default DailyVerse;

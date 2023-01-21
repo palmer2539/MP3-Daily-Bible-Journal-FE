@@ -2,6 +2,7 @@
   height: 90vh;
   background-position: center;
   background-size: contain;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .text_wrapper{
@@ -12,8 +13,9 @@
 }
 
 .landing_page_text_color{
-  text-align: center;;
-  color:red;
+  padding-top: 100px;
+  text-align: center;
+  color:rgb(255, 0, 0);
 }
 
 .landing_page_button{
@@ -27,4 +29,13 @@
 .log_in_button{
   display: flex;
   justify-content: center;
+}
+
+.landingCard{
+  padding: 35px;
+  border: none;
+  background-color: rgba(36, 36, 36, 0);
+  height: 60vh;
+  margin: 50px;
+  color: rgb(0, 188, 9);
 }

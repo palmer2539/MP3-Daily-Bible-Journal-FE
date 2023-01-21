@@ -1,0 +1,19 @@
+.dv_main_body_wrapper {
+  height: 90vh;
+  background-position: center;
+  background-size: contain;
+}
+
+.dv_text_wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verseCard{
+  background-color: rgba(189, 126, 8, 0.251);
+  color: white;
+  border: none;
+  border-radius: 15px;
+}

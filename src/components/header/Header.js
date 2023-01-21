@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -15,11 +16,14 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  console.log(userLogin)
+
   const logoutHandler = () => {
     dispatch(logout());
     navigate('/');
   };
 
+  useEffect(() => {}, [userInfo]);
 
   return (
    <Navbar className="all_navbar navbar navbar-expand-lg navbar-dark bg-primary">

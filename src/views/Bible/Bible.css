@@ -1,0 +1,22 @@
+.bible_main_body_wrapper {
+  background-position: center;
+  background-size: contain;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.text_wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bibleList{
+  color: rgb(0, 144, 67);
+  padding: 5px;
+}
+
+.bibleHead {
+  color: rgb(0, 145, 60);
+}

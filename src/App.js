@@ -14,6 +14,8 @@ import Aboutus from './views/Aboutus/Aboutus';
 import AccountInfo from './views/AccountInfo/AccountInfo';
 import LogIn from './views/LogIn/LogIn';
 import SignUp from './views/SignUp/SIgnUp';
+import NewEntry from './views/NewEntry/NewEntry';
+import SingleEntry from './views/SingleEntry/SingleEntry';
 
 
 function App() {
@@ -26,11 +28,13 @@ function App() {
           <Route path='/login' element={<LogIn />} exact/>
           <Route path='/signup' element={<SignUp />} exact/>
           <Route path='/journalentries' element={<Notes />}/>
-          {/* <Route path='/dailyverse' element={<DailyVerse />}/> */}
+          <Route path='/dailyverse' element={<DailyVerse />}/>
           <Route path='/faqs' element={<Faqs />}/>
           <Route path='/contactus' element={<Contactus />}/>
           <Route path='/bible' element={<Bible />}/>
           <Route path='/aboutus' element={<Aboutus />}/>
+          <Route path='/newentry' element={<NewEntry />}/>
+          {/* <Route path='/entry/:id' element={<SingleEntry />}/> */}
           <Route path='/accountinfo' element={<AccountInfo />}/>
         </Routes>
         <Footer />

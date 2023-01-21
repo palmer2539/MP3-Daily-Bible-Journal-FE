@@ -1,13 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Col, Container, Row, Card, Accordion, Badge, useAccordionButton } from 'react-bootstrap';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listOfEntries } from '../../actions/entryActions';
+import ErrorMessage from '../../components/errorMessage/ErrorMessage';
+import Loading from '../../components/loading/Loading';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 const Notes = () => {
-  const [entries, setEntries] = useState([])
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const entryList = useSelector( (state) => state.entryList)
 
-  const deleteModal = (id) => {
-    if (window.confirm("Do you wish to delete this entry?")) {
+  const { loading, entries, error} = entryList;
+
+  // const userLogin = useSelector( (state) => state.userLogin);
+  // const { userInfo } = userLogin
+  const userInfo = localStorage.getItem("userInfo");
+
+  const entryMake = useSelector((state) => state.entryMake);
+  const { success: successCreate } = entryMake;
+
+  const deleteHandler = (id) => {
+    if (window.confirm("are you sure you wish to proceed?")) {
+
     }
   }
 
@@ -23,30 +42,33 @@ const Notes = () => {
       );
   }
 
-  const getEntries= async () => {
-    const { data } = await axios.get('/journalentries');
-    setEntries(data);
-  }
-
   useEffect(() => {
-    getEntries();
-  }, [])
+    dispatch(listOfEntries());
+    if (!userInfo) {
+      navigate('/login')
+    }
+  }, [dispatch, 
+    successCreate, 
+    navigate, 
+    userInfo
+  ]);
 
-  console.log(entries);
 
   return (
-    <Container>
+    <Container style={{height:"90vh"}}>
       <Row>
         <Col style={{display: "inline-block"}}>
           <h1 style={{display: "inline-block"}} className="my-3">
-          My Journal Entries
+          {/* {`${userInfo.name}'s Journal Entries:`} */}
           </h1>
-          <Button className="my-4" variant="info" href="/newEntry" style={{float: "right"}}>
+          <Button className="my-4" variant="info" style={{float: "right"}} href="/newentry">
             New Entry
           </Button>{' '}
         </Col>
       </Row>
-      {entries.map((entry) => (
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {loading && <Loading />}
+      {entries && entries.reverse().map((entry) => (
         <Accordion key={entry._id}>
           <Card className="my-3" border="primary">
               <Card.Header>
@@ -72,7 +94,6 @@ const Notes = () => {
                       className="m-0"
                       variant="outline-danger" 
                       style={{float: "right"}} 
-                      onClick={() => deleteModal(entry.id)}
                       >
                         Delete
                       </Button>
@@ -94,7 +115,10 @@ const Notes = () => {
                     {entry.content}
                   </p>
                   <footer className="blockquote-footer">
-                    date goes here
+                    Entered on {" "}
+                    <cite>
+                      {entry.createdAt.substring(0,10)}
+                    </cite>
                   </footer>
                 </blockquote>
               </Card.Body>
