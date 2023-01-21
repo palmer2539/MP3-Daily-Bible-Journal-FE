@@ -5,7 +5,8 @@ import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/userActions';
-
+import "./LogIn.css"
+import Bgimage from "./notesbg.jpg"
 
 
 const LogIn = () => {
@@ -35,35 +36,38 @@ const LogIn = () => {
   };
 
   return (
-    <Container style={{height:"90vh"}}>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-      <Form onSubmit={submitHandler}>
-        <h1>
-          Daily Bible Journal Account
-        </h1>
-        <h5>
-          Login below:
-        </h5>
-        <Form.Group className="my-3" controlId="formBasicEmail">
-          <FloatingLabel controlId="floatingInput" label="Enter a valid email">
-            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-          </FloatingLabel>
-        </Form.Group>
-        <Form.Group className="my-3" controlId="formBasicPassword">
-          <FloatingLabel controlId="floatingPassword" label="Enter a password">
-            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          </FloatingLabel>
-        </Form.Group>
-        <Row>
-          <Col>
-            <Button className="my-3 btn-lg" variant="outline-primary" type="submit">
-              Login
-            </Button>
-          </Col>
-          {loading && <Loading />}
-        </Row>
-      </Form>
-    </Container>
+    <div className="login_main_body_wrapper" style={{ backgroundImage: `url(${Bgimage})`}}>
+      <Container className="login_text_wrapper" style={{height:"90vh"}}>
+        <Form onSubmit={submitHandler}>
+          <h1>
+            Daily Bible Journal Account
+          </h1>
+          <h3>
+            Login below:
+          </h3>
+          <Form.Group className="my-3" controlId="formBasicEmail">
+            <FloatingLabel controlId="floatingInput" label="Enter your email">
+              <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            </FloatingLabel>
+          </Form.Group>
+          <Form.Group className="my-3" controlId="formBasicPassword">
+            <FloatingLabel controlId="floatingPassword" label="Enter your password">
+              <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </FloatingLabel>
+          </Form.Group>
+          <Row>
+            <Col>
+              <Button className="my-3" variant="primary" type="submit" size="lg">
+                Login
+              </Button>
+            </Col>
+            {loading && <Loading />}
+          </Row>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+        </Form>
+      </Container>
+
+    </div>
   )
 }
 
