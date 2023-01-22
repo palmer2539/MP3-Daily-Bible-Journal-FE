@@ -50,7 +50,7 @@ function SingleEntry () {
 
   useEffect(() => {
     const fetching = async () => {
-      const { data } = await axios.get(`/journalentries/${id}`);
+      const { data } = await axios.get(`https://dailybiblejournalbackend.onrender.com/journalentries/${id}`);
 
       setHeading(data.heading);
       setContent(data.content);
