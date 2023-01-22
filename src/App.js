@@ -34,7 +34,7 @@ function App() {
           <Route path='/bible' element={<Bible />}/>
           <Route path='/aboutus' element={<Aboutus />}/>
           <Route path='/newentry' element={<NewEntry />}/>
-          {/* <Route path='/entry/:id' element={<SingleEntry />}/> */}
+          <Route path='/journalentries/:id' element={<SingleEntry />}/>
           <Route path='/accountinfo' element={<AccountInfo />}/>
         </Routes>
         <Footer />

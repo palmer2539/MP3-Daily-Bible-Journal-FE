@@ -39,10 +39,10 @@ const LogIn = () => {
     <div className="login_main_body_wrapper" style={{ backgroundImage: `url(${Bgimage})`}}>
       <Container className="login_text_wrapper" style={{height:"90vh"}}>
         <Form onSubmit={submitHandler}>
-          <h1>
+          <h1 className='loginh'>
             Daily Bible Journal Account
           </h1>
-          <h3>
+          <h3 className='loginh'>
             Login below:
           </h3>
           <Form.Group className="my-3" controlId="formBasicEmail">

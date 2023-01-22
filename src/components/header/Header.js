@@ -13,11 +13,11 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
 
-  const userInfo = localStorage.getItem("userInfo");
+  // const userInfo = localStorage.getItem("userInfo");
 
   console.log(userInfo)
 
@@ -39,23 +39,27 @@ const Header = () => {
             <Nav.Link href="/dailyverse">Today's Daily Verse</Nav.Link>
             <Nav.Link href="/aboutus">About us</Nav.Link>
           </Nav>
-          {/* {this.state.auth === 1 && (
-
-          )} */}
-          <Nav>
-            <NavDropdown className="me-5" title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/journalentries">
-                Journal Entries
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/accountinfo">
-                Account Info
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={logoutHandler}>
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          {userInfo ? (
+            <Nav>
+              <NavDropdown className="me-5" title={userInfo && userInfo.name} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/journalentries">
+                  Journal Entries
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/accountinfo">
+                  Account Info
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav className="me-5">
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

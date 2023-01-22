@@ -8,7 +8,10 @@ import {
   ENTRY_MADE_FAIL,
   ENTRY_UPDATE_REQUEST,
   ENTRY_UPDATE_SUCCESS,
-  ENTRY_UPDATE_FAIL
+  ENTRY_UPDATE_FAIL,
+  ENTRY_DELETE_REQUEST,
+  ENTRY_DELETE_SUCCESS,
+  ENTRY_DELETE_FAIL
 } from '../constants/entryConstants';
 
 export const listOfEntries = () => async (dispatch, getState) => {
@@ -111,7 +114,7 @@ export const updateEntry = (id, heading, content, bible_book) => async (dispatch
     });
 
     console.log(data)
-    
+
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -123,3 +126,39 @@ export const updateEntry = (id, heading, content, bible_book) => async (dispatch
     });
   };
 };
+
+export const deleteEntry = (id) => async (dispatch, getState) => {
+
+  try {
+    dispatch({
+      type: ENTRY_DELETE_REQUEST
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`/journalentries/${id}`, config);
+
+    dispatch({
+      type: ENTRY_DELETE_SUCCESS,
+      payload: data
+    });
+
+  } catch (error) {
+    const message = 
+    error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: ENTRY_DELETE_FAIL,
+      payload: message,
+    });
+  }
+}
