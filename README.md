@@ -22,3 +22,5 @@ At the Daily Bible Journal, you are able to access a vast variety of Bible versi
 -Node.js
 -MongoDB
 -React Bootstrap
+
+See https://github.com/palmer2539/MP3-Daily-Bible-Journal-BE for backend
