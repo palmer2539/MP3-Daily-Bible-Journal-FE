@@ -17,10 +17,6 @@ const Header = () => {
   const { userInfo } = userLogin;
 
 
-  // const userInfo = localStorage.getItem("userInfo");
-
-  console.log(userInfo)
-
   const logoutHandler = () => {
     dispatch(logout());
     navigate('/');

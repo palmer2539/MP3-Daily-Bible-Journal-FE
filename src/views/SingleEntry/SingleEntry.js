@@ -9,12 +9,18 @@ import { updateEntry } from '../../actions/entryActions';
 import axios from 'axios';
 import "./SingleEntry.css"
 import Bgimage from "./notesbg.jpg"
+import { useMatches } from "react-router-dom";
 
 
-function SingleEntry ({match, history}) {
+
+function SingleEntry () {
+
+  const { id } = useParams();
+
+
   const [heading, setHeading] = useState();
   const [content, setContent] = useState();
-  const [bibleBook, setBibleBook] = useState();
+  const [bible_book, setBible_book] = useState();
   const [date, setDate] = useState("");
 
   const navigate = useNavigate();
@@ -26,19 +32,14 @@ function SingleEntry ({match, history}) {
   const resetHandler = () => {
     setHeading("");
     setContent("");
-    setBibleBook("");
+    setBible_book("");
   };
 
-  // const deleteHandler = (id) => {
-  //   if (window.confirm("Do you wish to delete this journal entry?")) {
-  //     dispatch()
-  //   }
-  // };
 
   const updateHandler = (e) => {
     e.preventDefault();
-    dispatch(updateEntry(match.params.id, heading, content, bibleBook));
-    if (!heading || !content || !bibleBook);
+    dispatch(updateEntry(id, heading, content, bible_book));
+    if (!heading || !content || !bible_book);
 
     resetHandler();
     navigate("/journalentries")
@@ -46,19 +47,19 @@ function SingleEntry ({match, history}) {
 
 
 
-  // useEffect(() => {
-  //   const params = useParams();
-  //   const fetching = async () => {
-  //     const { data } = await axios.get(`/journalentries/${match.params.id}`);
 
-  //     setHeading(data.heading);
-  //     setContent(data.content);
-  //     setBibleBook(data.bibleBook);
-  //     setDate(data.updatedAt);
-  //   };
+  useEffect(() => {
+    const fetching = async () => {
+      const { data } = await axios.get(`/journalentries/${id}`);
 
-  //   fetching();
-  // }, [match.params.id, date]);
+      setHeading(data.heading);
+      setContent(data.content);
+      setBible_book(data.bible_book);
+      setDate(data.updatedAt);
+    };
+
+    fetching();
+  }, [id, date]);
 
 
 
@@ -103,8 +104,8 @@ function SingleEntry ({match, history}) {
                 <Form.Group as="h3" className="my-3" controlId="bible_book">
                   <Form.Label>Bible Book</Form.Label>
                   <Form.Control type="text" placeholder="Enter a book of The Bible"
-                    value={bibleBook}
-                    onChange={(e) => setBibleBook(e.target.value)}
+                    value={bible_book}
+                    onChange={(e) => setBible_book(e.target.value)}
                   />
                 </Form.Group>
 
@@ -123,9 +124,8 @@ function SingleEntry ({match, history}) {
             </Card.Body>
           <Card.Footer className="text-muted">Entering on {date.substring(0, 10)}</Card.Footer>
       </Card>
-      </Container>
-
-    </div>
+    </Container>
+  </div>
   )
 }
 

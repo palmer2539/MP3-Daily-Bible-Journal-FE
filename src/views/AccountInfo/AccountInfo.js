@@ -28,7 +28,6 @@ const AccountInfo = () => {
 
 
   useEffect(() => {
-    // const userInfo = localStorage.getItem("userInfo");
 
     if(!userInfo) {
       navigate("/");
