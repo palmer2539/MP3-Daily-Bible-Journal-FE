@@ -42,6 +42,7 @@ const AccountInfo = () => {
     e.preventDefault();
 
     dispatch(updateProfile({ name, email, password }));
+    setMessage('Account info successfully updated!')
   };
 
 
