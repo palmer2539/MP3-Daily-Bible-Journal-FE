@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { updateProfile } from '../../actions/userActions';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import Loading from '../../components/loading/Loading';
+import SuccessMessage from '../../components/successMessage/SuccessMessage';
 import "./AccountInfo.css"
 import Bgimage from "./notesbg.jpg"
+
 
 
 const AccountInfo = () => {
@@ -84,7 +86,7 @@ const AccountInfo = () => {
           </Button>
         {loading && <Loading />}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        {success && (<ErrorMessage>{message}</ErrorMessage>)}
+        {success && (<SuccessMessage>{message}</SuccessMessage>)}
         </Form>
       </Container>
     </div>
