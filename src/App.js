@@ -8,7 +8,7 @@ import LandingPage from './views/LandingPage/LandingPage';
 import Notes from './views/Notes/Notes';
 import DailyVerse from './views/DailyVerse/DailyVerse';
 import Faqs from './views/Faq/Faqs';
-import Contactus from './views/Contactus/Contactus';
+import Contactus from './views/Contact/Contactus';
 import Bible from './views/Bible/Bible';
 import Aboutus from './views/Aboutus/Aboutus';
 import AccountInfo from './views/AccountInfo/AccountInfo';
