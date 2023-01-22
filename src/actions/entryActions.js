@@ -144,7 +144,7 @@ export const deleteEntry = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/journalentries/${id}`, config);
+    const { data } = await axios.delete(`https://dailybiblejournalbackend.onrender.com/journalentries/${id}`, config);
 
     dispatch({
       type: ENTRY_DELETE_SUCCESS,

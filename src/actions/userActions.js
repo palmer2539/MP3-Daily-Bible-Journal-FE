@@ -117,7 +117,7 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("https://dailybiblejournalbackend.onrender.com/users/account", user, config);
+    const { data } = await axios.post("https://dailybiblejournalbackend.onrender.com/users", user, config);
 
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
 
