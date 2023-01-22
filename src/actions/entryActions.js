@@ -25,7 +25,7 @@ export const listOfEntries = () => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-    const { data } = await axios.get('/journalentries', config);
+    const { data } = await axios.get('https://dailybiblejournalbackend.onrender.com/journalentries', config);
 
     dispatch({
       type: ENTRY_LIST_SUCCESS,
@@ -62,7 +62,7 @@ export const makeNewEntry = (heading, content, bible_book) => async (dispatch, g
 
 
     const { data } = await axios.post(
-      '/journalentries/make',
+      'https://dailybiblejournalbackend.onrender.com/journalentries/make',
       { heading, content, bible_book },
       config
     )
@@ -103,7 +103,7 @@ export const updateEntry = (id, heading, content, bible_book) => async (dispatch
     };
 
     const { data } = await axios.put(
-      `/journalentries/${id}`,
+      `https://dailybiblejournalbackend.onrender.com/journalentries/${id}`,
       { heading, content, bible_book },
       config
     );

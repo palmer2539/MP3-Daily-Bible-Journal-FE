@@ -12,6 +12,8 @@ import {
 } from '../constants/userConstants';
 import axios from 'axios';
 
+
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST});
@@ -24,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     
 
     const { data } = await axios.post(
-      "/users/login",
+      "https://dailybiblejournalbackend.onrender.com/users/login",
       {
         email,
         password
@@ -115,7 +117,7 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/users/account", user, config);
+    const { data } = await axios.post("https://dailybiblejournalbackend.onrender.com/users/account", user, config);
 
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
 
