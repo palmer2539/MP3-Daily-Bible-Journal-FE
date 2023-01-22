@@ -10,12 +10,12 @@ import DailyVerse from './views/DailyVerse/DailyVerse';
 import Faqs from './views/Faq/Faqs';
 import Contactus from './views/Contact/Contactus';
 import Bible from './views/Bible/Bible';
-import Aboutus from './views/Aboutus/Aboutus';
-import AccountInfo from './views/AccountInfo/AccountInfo';
-import LogIn from './views/LogIn/LogIn';
-import SignUp from './views/SignUp/SIgnUp';
-import NewEntry from './views/NewEntry/NewEntry';
-import SingleEntry from './views/SingleEntry/SingleEntry';
+import Aboutus from './views/About/Aboutus';
+import AccountInfo from './views/Account/AccountInfo';
+import LogIn from './views/LogInpage/LogIn';
+import SignUp from './views/SignUppage/SIgnUp';
+import NewEntry from './views/NewEntrypage/NewEntry';
+import SingleEntry from './views/SingleEntrypage/SingleEntry';
 
 
 function App() {
