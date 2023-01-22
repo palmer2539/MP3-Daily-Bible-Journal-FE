@@ -9,7 +9,6 @@ import { updateEntry } from '../../actions/entryActions';
 import axios from 'axios';
 import "./SingleEntry.css"
 import Bgimage from "./notesbg.jpg"
-import { useMatches } from "react-router-dom";
 
 
 
