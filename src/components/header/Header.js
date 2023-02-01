@@ -25,11 +25,11 @@ const Header = () => {
   useEffect(() => {}, [userInfo]);
 
   return (
-   <Navbar className="all_navbar navbar navbar-expand-lg navbar-dark bg-primary">
+   <Navbar collapseOnSelect expand="md" className="headerNavbar all_navbar navbar navbar-dark bg-primary">
       <Container fluid>
         <Navbar.Brand href="/">Daily Bible Journal</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/bible">The Bible</Nav.Link>
             <Nav.Link href="/dailyverse">Today's Daily Verse</Nav.Link>

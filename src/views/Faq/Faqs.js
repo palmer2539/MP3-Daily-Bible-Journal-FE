@@ -9,7 +9,7 @@ const Faqs = () => {
       <Container className= "faq_text_wrapper" >
         <Card className="faqCard">
           <h1 className="faqh">Faq's</h1>
-          <h5 className="faqh">You got the questions, and we got the answers!</h5>
+          <h5 className="faqh">You got the questions, <br/> and we got the answers!</h5>
           <Accordion className="accordion">
             <Accordion.Item eventKey="1">
               <Accordion.Header>What Bible versions do you support?</Accordion.Header>

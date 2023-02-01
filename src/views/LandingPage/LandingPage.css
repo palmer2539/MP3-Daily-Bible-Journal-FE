@@ -1,8 +1,9 @@
 .main_body_wrapper {
-  height: 90vh;
+  height: 100vh;
   background-position: center;
   background-size: contain;
   background-color: rgba(0, 0, 0, 0.25);
+  overflow: scroll;
 }
 
 .text_wrapper{
@@ -13,9 +14,9 @@
 }
 
 .landing_page_text_color{
-  padding-top: 100px;
+  padding-top: 30%;
   text-align: center;
-  color:rgb(255, 0, 0);
+  font-size: 150%;
 }
 
 .landing_page_button{
@@ -39,4 +40,11 @@
   margin: 50px;
   color:rgb(137, 192, 174);
   backdrop-filter: blur(3px);
+}
+
+@media screen and (max-width: 300px) {
+  .mobileBody {
+    font-size: 100%;
+    width: 100vw;
+  }
 }

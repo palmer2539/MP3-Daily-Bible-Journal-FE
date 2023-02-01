@@ -69,7 +69,7 @@ const Notes = () => {
               variant="info" 
               style={{float: "right"}} 
               href="/newentry" 
-              size="lg"
+              size="md"
             >
               New Entry
             </Button>{' '}

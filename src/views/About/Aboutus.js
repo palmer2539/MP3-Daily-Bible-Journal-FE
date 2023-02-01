@@ -12,10 +12,10 @@ const Aboutus = () => {
 
             <h3>Welcome to Daily Bible Journal!</h3>
 
-            <h5>At Daily Bible Journal we believe it is as important to notate your learnings while reading The Bible.</h5>
+            <h6>At Daily Bible Journal we believe it is as important to notate your learnings while reading The Bible.</h6>
               
-            <h5>This is your one stop to reading The Bible and saving your notes all in one place! Gone are the days of needing to keep track of all your notes. 
-            If you have further questions, head on over to our <a href="/faqs">"FAQ"</a> page to see if we already answered them!</h5>
+            <h6>This is your one stop to reading The Bible and saving your notes all in one place! Gone are the days of needing to keep track of all your notes. 
+            If you have further questions, head on over to our <a href="/faqs">"FAQ"</a> page to see if we already answered them!</h6>
         </Card>
       </Container>
     </div>
